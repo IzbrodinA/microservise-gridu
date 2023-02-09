@@ -1,0 +1,27 @@
+server:
+  port: 8072
+ 
+eureka:
+  instance:
+    preferIpAddress: true
+  client:
+    serviceUrl:
+      defaultZone: http://localhost:8070/eureka/
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: gateway
+
+
+spring:
+  cloud:
+    gateway:
+      routes:
+        - id: product_service
+          uri: lb://product-service
+          predicates:
+            - Path=/product/**
+          filters:
+            - AddRequestHeader=X-Request-AppId, 238732

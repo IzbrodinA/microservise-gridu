@@ -1,0 +1,16 @@
+spring:
+  application:
+    name: product-service
+  profiles:
+    active: dev
+  config:
+    import: "optional:configserver:http://localhost:8071"
+
+
+#logging:
+#  level:
+#    root: DEBUG
+#    com.netflix: DEBUG
+#    org.springframework: DEBUG
+#    com.gridU: DEBUG
+
